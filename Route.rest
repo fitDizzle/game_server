@@ -1,0 +1,29 @@
+
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "name": "John",
+    "username": "JohnnyIV",
+    "password": "asdasd"
+}
+
+###
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "username": "AustinHill",
+    "password": "asdasd"
+}
+
+###
+GET http://localhost:8000/auth/get-user/eyJhbGciOiJIUzI1NiJ9.OQ.rABojY9ZAU6Q7uYs4tyoU1IWUvFiFX2sMjZWDQ6CoII
+
+###
+POST http://localhost:8000/gameplay/save-game/active
+Content-Type: application/json
+
+{
+    "username": "test"
+}

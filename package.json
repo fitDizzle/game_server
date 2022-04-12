@@ -1,0 +1,37 @@
+{
+  "name": "graduate-repo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm start --prefix client",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmut": "^1.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mariadb": "^2.5.3",
+    "pg": "^8.7.3",
+    "postgres": "^3.0.0",
+    "proxy": "^1.0.2",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "config": "^3.3.6",
+    "dotenv": "^10.0.0",
+    "node-cache": "^5.1.2",
+    "nodemon": "^2.0.7",
+    "sequelize-cli": "^6.2.0"
+  }
+}
