@@ -6,6 +6,7 @@
       "database": "d4h5o5seoueaft",
       "host": "ec2-34-207-12-160.compute-1.amazonaws.com",
       "dialect": "postgres",
+      "port": 5432,
       "dialectOptions":{
         "allowPublicKeyRetrieval": true,
         "skipSetTimeZone": true
@@ -16,7 +17,7 @@
       "password": null,
       "database": "database_test",
       "host": "127.0.0.1",
-      "dialect": "mysql"
+      "dialect": "postgres"
     },
     "production": {
       "user": "rgsfmkdctjvykl",
@@ -25,6 +26,7 @@
       "database": "d4h5o5seoueaft",
       "host": "ec2-34-207-12-160.compute-1.amazonaws.com",
       "dialect": "postgres",
+      "port": 5432,
       "dialectOptions":{
         "allowPublicKeyRetrieval": true,
         "skipSetTimeZone": true
