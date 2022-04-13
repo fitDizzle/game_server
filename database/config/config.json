@@ -9,6 +9,9 @@
       "dialectOptions":{
         "allowPublicKeyRetrieval": true,
         "skipSetTimeZone": true
+      },
+      "ssl": {
+        "rejectUnauthorized": false
       }
     },   
     "test": {
@@ -16,14 +19,20 @@
       "password": null,
       "database": "dd4h5o5seoueaft",
       "host": "127.0.0.1",
-      "dialect": "postgres"
+      "dialect": "postgres",
+      "ssl": {
+        "rejectUnauthorized": false
+      }
     },
     "production": {
       "username": "root",
       "password": null,
       "database": "d4h5o5seoueaft",
       "host": "ec2-34-207-12-160.compute-1.amazonaws.com",
-      "dialect": "postgres"
+      "dialect": "postgres",
+      "ssl": {
+        "rejectUnauthorized": false
+      }
     }
   }
   
