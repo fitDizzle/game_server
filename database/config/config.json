@@ -1,10 +1,10 @@
 {
     "development": {
-      "user": "fitdizzle",
+      "user": "rgsfmkdctjvykl",
       "username": "fitdizzle",
-      "password": "",
-      "database": "scrabbledb",
-      "host": "127.0.0.1",
+      "password": "af3b2530cd791b741a38e290e023818e2a9990a0f4ccdd88bf01ae3d06900505",
+      "database": "d4h5o5seoueaft",
+      "host": "ec2-34-207-12-160.compute-1.amazonaws.com",
       "dialect": "postgres",
       "dialectOptions":{
         "allowPublicKeyRetrieval": true,
@@ -19,11 +19,16 @@
       "dialect": "mysql"
     },
     "production": {
-      "username": "root",
-      "password": null,
-      "database": "database_production",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
+      "user": "rgsfmkdctjvykl",
+      "username": "fitdizzle",
+      "password": "af3b2530cd791b741a38e290e023818e2a9990a0f4ccdd88bf01ae3d06900505",
+      "database": "d4h5o5seoueaft",
+      "host": "ec2-34-207-12-160.compute-1.amazonaws.com",
+      "dialect": "postgres",
+      "dialectOptions":{
+        "allowPublicKeyRetrieval": true,
+        "skipSetTimeZone": true
+      }
     }
   }
   
