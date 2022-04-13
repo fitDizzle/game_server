@@ -20,9 +20,9 @@ app.use(express.urlencoded({extended:false}));
 
 
 //add database here
-require('./database/otherConnection');  
+// require('./database/otherConnection'); 
 db.sequelize.sync();
 //app.use(routes);
 app.use(routes);
 
-app.listen(PORT, ()=>console.log(`This fool's running a Honda S ${PORT}`))
+app.listen(PORT||8080, ()=>console.log(`This fool's running a Honda S ${PORT}`))
