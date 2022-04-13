@@ -3,8 +3,8 @@ POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "name": "John",
-    "username": "JohnnyIV",
+    "name": "test player",
+    "username": "test player",
     "password": "asdasd"
 }
 
@@ -13,7 +13,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "username": "AustinHill",
+    "username": "TestPlayer",
     "password": "asdasd"
 }
 
