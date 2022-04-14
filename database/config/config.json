@@ -9,10 +9,11 @@
       "port": 5432,
       "dialectOptions":{
         "allowPublicKeyRetrieval": true,
-        "skipSetTimeZone": true
-      },
-      "ssl": {
-        "rejectUnauthorized": false
+        "skipSetTimeZone": true,
+        "ssl": {
+          "require": true,
+          "rejectUnauthorized": false
+        }
       }
     },   
     "test": {
@@ -32,10 +33,11 @@
       "port": 5432,
       "dialectOptions":{
         "allowPublicKeyRetrieval": true,
-        "skipSetTimeZone": true
-      },
-      "ssl": {
-        "rejectUnauthorized": false
+        "skipSetTimeZone": true,
+        "ssl": {
+          "require": true,
+          "rejectUnauthorized": false
+        }
       }
     }
   }
