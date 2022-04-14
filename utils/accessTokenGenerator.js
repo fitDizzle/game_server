@@ -7,7 +7,7 @@ const accessTokenGenerator = (user_id, scope, URL) => {
  console.log("acc gen", URL)
     const payload = {
       id: user_id,
-      iss: "https://scrababble-game-server.herokuapp.com/",
+      iss: "https://scrababble-game-server.herokuapp.com",
       sub: `user|${user_id}`,  
       aud: URL,
       scope
