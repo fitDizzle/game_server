@@ -1,1 +1,1 @@
-worker: run start
+web: node index.ks
