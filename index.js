@@ -6,7 +6,7 @@ const app = express();
 const cors = require('cors');
 const routes = require('./routes');
 const PORT = process.env.PORT || 3000;
-const db = require('./database/models/index');
+// const db = require('./database/models/index');
 
 
 app.use(cors());
@@ -23,8 +23,8 @@ app.get('/', (req, res) => {
 
 //add database here
 require('./database/otherConnection'); 
-db.sequelize.sync();
+// db.sequelize.sync();
 //app.use(routes);
-app.use(routes);
+// app.use(routes);
 
 app.listen(PORT, ()=>console.log(`This fool's running a Honda S ${PORT}`))
