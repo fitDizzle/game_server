@@ -12,7 +12,6 @@
     "client": "npm start --prefix client",
     "server": "nodemon index.js",
     "start": "nodemon index.js",
-    "npm start": "nodemon index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
