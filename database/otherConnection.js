@@ -5,10 +5,20 @@ const { host, user, password, database } = config.development;
 
 const credentials = {
   user: "rgsfmkdctjvykl",
-  host: "ec2-34-207-12-160.compute-1.amazonaws.com",
-  database: "d4h5o5seoueaft",
+  username: "rgsfmkdctjvykl",
   password: "af3b2530cd791b741a38e290e023818e2a9990a0f4ccdd88bf01ae3d06900505",
+  database: "d4h5o5seoueaft",
+  host: "ec2-34-207-12-160.compute-1.amazonaws.com",
+  uri: "postgres://rgsfmkdctjvykl:af3b2530cd791b741a38e290e023818e2a9990a0f4ccdd88bf01ae3d06900505@ec2-34-207-12-160.compute-1.amazonaws.com:5432/d4h5o5seoueaft",
   port: 5432,
+  dialectOptions:{
+    allowPublicKeyRetrieval: true,
+    skipSetTimeZone: true,
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  }
 };
 
 async function poolDemo() {
