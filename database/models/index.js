@@ -7,11 +7,13 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = new Sequelize(
-  process.env.DATABASE_URL,
-  {
-    logging: false,
-    ssl: { rejectUnauthorized: false } //solved the problem with self signed sertificate
+  process.env.DATABASE_URL, {
+  host: process.env.HOST,
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: { rejectUnauthorized: false }
   }
+}
 );
 
 let sequelize;
