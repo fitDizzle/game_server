@@ -1,5 +1,5 @@
 const db = require("../database/models/index");
-const User = db.User;
+const User = require('../database/models/User');
 const Settings = db.Settings
 
 const jwt = require("jsonwebtoken");
@@ -23,7 +23,7 @@ module.exports = {
           msg: "This username is already registered",
         });
       }
-    
+
       let newUser = await User.create({
         name,
         username,
@@ -54,7 +54,7 @@ module.exports = {
     try {
       console.log("Login");
       const { username, password } = req.body;
-      
+
       let user = await User.findAll({
         where: {
           username,
@@ -108,7 +108,7 @@ module.exports = {
           id: decryptedToken
         }
       })
-      if(!user){
+      if (!user) {
         return res.status(400).json({
           success: false,
           msg: "User not found"

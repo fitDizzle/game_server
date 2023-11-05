@@ -5,6 +5,7 @@ const cors = require('cors');
 const routes = require('./routes');
 const PORT = process.env.PORT;
 
+app.options('*', cors())
 app.use(cors({
     origin: 'https://scrababble-client-939ac493651f.herokuapp.com',
     methods: 'GET, POST, PUT, DELETE',
