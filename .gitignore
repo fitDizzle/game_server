@@ -1,2 +1,26 @@
+# Ignore node_modules directory
+node_modules/
 
-node_modules
+# Ignore .env files
+.env
+
+# Ignore yarn.lock file
+yarn.lock
+
+# Ignore any files or directories starting with . (e.g., .idea, .vscode)
+.*
+
+# Ignore log files
+*.log
+
+# Ignore build artifacts and dependencies
+/dist/
+/build/
+.DS_Store
+
+# Ignore npm debugging log
+npm-debug.log*
+
+# Ignore editor specific files/directories (e.g., .vscode, .idea)
+.vscode/
+.idea/

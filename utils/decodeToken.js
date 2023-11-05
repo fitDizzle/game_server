@@ -1,7 +1,7 @@
 let jwt = require("jsonwebtoken");
 
 module.exports = decodeToken = (token, type) => {
-    if(type){
+    if (type) {
         let decodedToken = jwt.verify(token, process.env.accessTokenSecret, {
             algorithms: ['HS256']
         })
