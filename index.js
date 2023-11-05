@@ -5,7 +5,11 @@ const cors = require('cors');
 const routes = require('./routes');
 const PORT = process.env.PORT;
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://scrababble-client-939ac493651f.herokuapp.com',
+    methods: 'GET, POST, PUT, DELETE',
+    allowedHeaders: 'Content-Type, Authorization',
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use(helmut())
