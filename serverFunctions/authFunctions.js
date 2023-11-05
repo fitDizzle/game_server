@@ -102,7 +102,7 @@ module.exports = {
 
       // Verify the JWT token and get the user information
       const decodedToken = jwt.verify(token, process.env.jwtSecret);
-      const user = await User.findByPk(decodedToken.id);
+      const user = await User.findByPk(decodedToken);
       // let decryptedToken = await jwt.verify(token, process.env.jwtSecret);
       // let user = await User.findAll({
       //   where: {
