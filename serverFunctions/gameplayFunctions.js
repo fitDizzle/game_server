@@ -1,16 +1,12 @@
-const db = require("../database/models/index");
-const {
-  User,
-  BagLetter,
-  Move,
-  SavedGame,
-  Tile,
-  TileObject,
-  PlayedWord,
-  HighestWordScore,
-} = db;
-const Sequalize = require("sequelize");
-const Op = Sequalize.Op;
+const { Op } = require("sequelize");
+const User = require('../database/models/User');
+const BagLetter = require('../database/models/BagLetter');
+const Move = require('../database/models/Move');
+const SavedGame = require('../database/models/SavedGame');
+const Tile = require('../database/models/Tile');
+const TileObject = require('../database/models/TileObject');
+const PlayedWord = require('../database/models/PlayedWord');
+const HighestWordScore = require('../database/models/HighestWordScore');
 
 module.exports = {
   validateWord: async (req, res) => {

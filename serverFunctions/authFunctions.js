@@ -1,14 +1,14 @@
 const User = require('../database/models/User');
 const Settings = require('../database/models/Settings');
-
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 module.exports = {
   register: async (req, res) => {
     try {
       const date = new Date(Date.now());
       const { name, username, password } = req.body;
-      const hashed = jwt.sign(password, process.env.passwordSecret);
+      const hashed_password = jwt.sign(password, process.env.passwordSecret);
 
       let user = await User.findOne({
         where: {
@@ -26,7 +26,7 @@ module.exports = {
       let newUser = await User.create({
         name,
         username,
-        password: hashed,
+        password: hashed_password,
         createdAt: date,
         updatedAt: date,
       });
@@ -98,21 +98,25 @@ module.exports = {
   },
   getUser: async (req, res) => {
     try {
-      console.log(req.params, "get user")
       const { token } = req.params
 
-      let decryptedToken = await jwt.verify(token, process.env.jwtSecret)
-      let user = await User.findAll({
-        where: {
-          id: decryptedToken
-        }
-      })
+      // Verify the JWT token and get the user information
+      const decodedToken = jwt.verify(token, process.env.jwtSecret);
+      const user = await User.findByPk(decodedToken.id);
+      // let decryptedToken = await jwt.verify(token, process.env.jwtSecret);
+      // let user = await User.findAll({
+      //   where: {
+      //     id: decryptedToken
+      //   }
+      // })
+
       if (!user) {
         return res.status(400).json({
           success: false,
           msg: "User not found"
         })
       }
+
       return res.status(200).json({
         success: true,
         msg: "User information has been loaded",

@@ -1,38 +1,28 @@
 "use strict";
-const { Model } = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
-  class TileObject extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+const { DataTypes } = require("sequelize");
+const { db } = require("./index");
 
-      TileObject.belongsTo(models.SavedGame,{
-        onDelete: "CASCADE"
-      })
-      TileObject.hasMany(models.BagLetter, {
-        onDelete: "CASCADE"
-      })
-    }
+const TileObject = db.define("TileObject", {
+  tile_object_isBag: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+});
 
-  }
-  TileObject.init(
-    {
-      tile_object_isBag: { type: DataTypes.INTEGER, allowNull: false },
-
-      
-      
- 
-    },
-    {
-      sequelize,
-      modelName: "TileObject",
-    }
-  );
-
-  return TileObject;
+TileObject.associate = (models) => {
+  TileObject.belongsTo(models.SavedGame, {
+    onDelete: "CASCADE",
+  });
+  TileObject.hasMany(models.BagLetter, {
+    onDelete: "CASCADE",
+  });
 };
- 
+
+try {
+  TileObject.sync();
+  console.log("TileObject model successfully created");
+} catch (error) {
+  console.log("Error creating TileObject model: ", error);
+}
+
+module.exports = TileObject;

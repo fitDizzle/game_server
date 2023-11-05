@@ -1,33 +1,37 @@
 "use strict";
-const { Model } = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
-  class HighestWordScore extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-      HighestWordScore.belongsTo(models.SavedGame, {
-        onDelete: "CASCADE"
-      })
-    }
+const { DataTypes } = require("sequelize");
+const { db } = require("./index");
 
-  }
-  HighestWordScore.init(
-    {
-      highest_word_score_word: { type: DataTypes.STRING, allowNull: false },
-      highest_word_score_score: { type: DataTypes.INTEGER, allowNull: false },
-      highest_word_score_multiplier: { type: DataTypes.STRING, allowNull: false },
-      highest_word_score_isPlayer: { type: DataTypes.INTEGER, allowNull: false }, 
-    },
-    { 
-      sequelize,
-      modelName: "HighestWordScore",
-    }
-  );
+const HighestWordScore = db.define("HighestWordScore", {
+  highest_word_score_word: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  highest_word_score_score: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  highest_word_score_multiplier: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  highest_word_score_isPlayer: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+});
 
-  return HighestWordScore;
+HighestWordScore.associate = (models) => {
+  HighestWordScore.belongsTo(models.SavedGame, {
+    onDelete: "CASCADE",
+  });
 };
- 
+
+try {
+  HighestWordScore.sync();
+  console.log("HighestWordScore model successfully created");
+} catch (error) {
+  console.log("Error creating HighestWordScore model: ", error);
+}
+
+module.exports = HighestWordScore;

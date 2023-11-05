@@ -1,33 +1,29 @@
 "use strict";
-const { Model } = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
-  class PlayedWord extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+const { DataTypes } = require("sequelize");
+const { db } = require("./index");
 
-      PlayedWord.belongsTo(models.SavedGame,{
-        onDelete: "CASCADE"
-      })
-    }
- 
-  }
-  PlayedWord.init(
-    {
-      word_played_word: { type: DataTypes.STRING, allowNull: false },
-      word_played_isPlayer: { type: DataTypes.INTEGER, allowNull: false },
- 
-    },
-    {
-      sequelize,
-      modelName: "PlayedWord",
-    }
-  );
+const PlayedWord = db.define("PlayedWord", {
+  word_played_word: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  word_played_isPlayer: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+});
 
-  return PlayedWord;
+PlayedWord.associate = (models) => {
+  PlayedWord.belongsTo(models.SavedGame, {
+    onDelete: "CASCADE",
+  });
 };
- 
+
+try {
+  PlayedWord.sync();
+  console.log("PlayedWord model successfully created");
+} catch (error) {
+  console.log("Error creating PlayedWord model: ", error);
+}
+
+module.exports = PlayedWord;
