@@ -6,7 +6,7 @@
     "database": "",
     "host": "",
     "dialect": "postgres",
-    "uri": "t",
+    "uri": "",
     "port": 5432,
     "dialectOptions": {
       "allowPublicKeyRetrieval": true,

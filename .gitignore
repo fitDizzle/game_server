@@ -24,3 +24,5 @@ npm-debug.log*
 # Ignore editor specific files/directories (e.g., .vscode, .idea)
 .vscode/
 .idea/
+
+*.rest
