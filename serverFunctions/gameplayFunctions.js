@@ -5,7 +5,7 @@ const Move = require('../database/models/Move');
 const SavedGame = require('../database/models/SavedGame');
 const Tile = require('../database/models/Tile');
 const TileObject = require('../database/models/TileObject');
-const PlayedWord = require('../database/models/PlayedWord');
+const PlayedWord = require('../database/models/WordPlayed');
 const HighestWordScore = require('../database/models/HighestWordScore');
 
 module.exports = {
