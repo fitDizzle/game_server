@@ -1,6 +1,5 @@
-const { db } = require("../database/models/index");
 const User = require('../database/models/User');
-const Settings = db.Settings
+const Settings = require('../database/models/Settings');
 
 const jwt = require("jsonwebtoken");
 
