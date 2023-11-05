@@ -1,4 +1,4 @@
-const db = require("../database/models/index");
+const { db } = require("../database/models/index");
 const User = require('../database/models/User');
 const Settings = db.Settings
 
