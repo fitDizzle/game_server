@@ -1,11 +1,11 @@
-const db = require("../database/models/index");
-const Settings = db.Settings;
-const decodeToken = require("../utils/decodeToken");
+const db = require('../database/models/index');
+const Settings = require('../database/models/Settings');
+const decodeToken = require('../utils/decodeToken');
 
 module.exports = {
   getSettings: async (req, res) => {
     try {
-      console.log(req.token, "TOKEN");
+      console.log(req.token, 'TOKEN');
       let settings = await Settings.findAll({
         where: {
           username: req.params.username,
@@ -14,12 +14,12 @@ module.exports = {
       if (!settings) {
         return res.status(400).json({
           success: false,
-          msg: "Error getting players settings.",
+          msg: 'Error getting players settings.',
         });
       }
       return res.status(200).json({
         success: true,
-        msg: "Players settings loaded.",
+        msg: 'Players settings loaded.',
         settings: {
           UserId: settings[0].UserId,
           lifeLines: settings[0].lifeLines,
@@ -31,13 +31,13 @@ module.exports = {
       });
     } catch (error) {
       console.log(error);
-      res.status(500).send("Error finding players settings from server.");
+      res.status(500).send('Error finding players settings from server.');
     }
   },
 
   updateSettings: async (req, res) => {
     try {
-      const UserId = decodeToken(req.token, "access");
+      const UserId = decodeToken(req.token, 'access');
       const { options } = req.params;
       let settings = await Settings.findOne({
         where: {
@@ -57,23 +57,23 @@ module.exports = {
 
       return res.status(200).json({
         success: true,
-        msg: "Success. Players settings updated successfully.",
+        msg: 'Success. Players settings updated successfully.',
       });
     } catch (error) {
       console.log(error);
       res
         .status(500)
-        .send("There was an internal error updated user settings.");
+        .send('There was an internal error updated user settings.');
     }
   },
 
   resetSettings: async (req, res) => {
     console.log(req.token)
     try {
-      const UserId = decodeToken(req.token, "access");
+      const UserId = decodeToken(req.token, 'access');
       const date = new Date(Date.now());
 
-      console.log("RESET SETTINGS");
+      console.log('RESET SETTINGS');
       await Settings.update(
         {
           updatedAt: date,
@@ -91,11 +91,11 @@ module.exports = {
 
       return res.status(200).json({
         success: true,
-        msg: "Success. Players settings reset to default.",
+        msg: 'Success. Players settings reset to default.',
       });
     } catch (error) {
       console.log(error);
-      res.status(500).send("Error resetting players settings.");
+      res.status(500).send('Error resetting players settings.');
     }
   },
 };
