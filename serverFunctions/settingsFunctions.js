@@ -21,7 +21,7 @@ module.exports = {
         success: true,
         msg: 'Players settings loaded.',
         settings: {
-          userId: settings[0].userId,
+          UserId: settings[0].UserId,
           lifeLines: settings[0].lifeLines,
           bagCount: settings[0].bagCount,
           wordSuggestions: settings[0].wordSuggestions,
@@ -37,11 +37,11 @@ module.exports = {
 
   updateSettings: async (req, res) => {
     try {
-      const userId = decodeToken(req.token, 'access');
+      const UserId = decodeToken(req.token, 'access');
       const { options } = req.params;
       let settings = await Settings.findOne({
         where: {
-          userId,
+          UserId,
         },
       });
       await Settings.update(
@@ -50,7 +50,7 @@ module.exports = {
         },
         {
           where: {
-            userId,
+            UserId,
           },
         }
       );
@@ -70,7 +70,7 @@ module.exports = {
   resetSettings: async (req, res) => {
     console.log(req.token)
     try {
-      const userId = decodeToken(req.token, 'access');
+      const UserId = decodeToken(req.token, 'access');
       const date = new Date(Date.now());
 
       console.log('RESET SETTINGS');
@@ -84,7 +84,7 @@ module.exports = {
         },
         {
           where: {
-            userId,
+            UserId,
           },
         }
       );
