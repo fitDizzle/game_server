@@ -3,9 +3,9 @@ const { DataTypes } = require("sequelize");
 const { db } = require("./index");
 
 const Settings = db.define("Settings", {
-  UserId: {
+  username: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: false,
   },
   wordSuggestions: {
     type: DataTypes.BOOLEAN,

@@ -5,7 +5,6 @@ const decodeToken = require('../utils/decodeToken');
 module.exports = {
   getSettings: async (req, res) => {
     try {
-      console.log(req.token, 'TOKEN');
       let settings = await Settings.findAll({
         where: {
           username: req.params.username,
@@ -73,7 +72,6 @@ module.exports = {
       const UserId = decodeToken(req.token, 'access');
       const date = new Date(Date.now());
 
-      console.log('RESET SETTINGS');
       await Settings.update(
         {
           updatedAt: date,
