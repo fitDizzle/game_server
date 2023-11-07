@@ -4,11 +4,10 @@ const decodeToken = require('../utils/decodeToken');
 
 module.exports = {
   getSettings: async (req, res) => {
+    const username = req.params.username;
     try {
       let settings = await Settings.findAll({
-        where: {
-          username: req.params.username,
-        },
+        where: { username },
       });
       if (!settings) {
         return res.status(400).json({
@@ -20,7 +19,7 @@ module.exports = {
         success: true,
         msg: 'Players settings loaded.',
         settings: {
-          UserId: settings[0].UserId,
+          username: settings[0].username,
           lifeLines: settings[0].lifeLines,
           bagCount: settings[0].bagCount,
           wordSuggestions: settings[0].wordSuggestions,
@@ -35,13 +34,12 @@ module.exports = {
   },
 
   updateSettings: async (req, res) => {
+    const username = req.params.username;
     try {
-      const UserId = decodeToken(req.token, 'access');
+      // const UserId = decodeToken(req.token, 'access');
       const { options } = req.params;
       let settings = await Settings.findOne({
-        where: {
-          UserId,
-        },
+        where: { username },
       });
       await Settings.update(
         {
@@ -49,7 +47,7 @@ module.exports = {
         },
         {
           where: {
-            UserId,
+            username,
           },
         }
       );
@@ -67,9 +65,9 @@ module.exports = {
   },
 
   resetSettings: async (req, res) => {
-    console.log(req.token)
+    const username = req.params.username;
     try {
-      const UserId = decodeToken(req.token, 'access');
+      // const UserId = decodeToken(req.token, 'access');
       const date = new Date(Date.now());
 
       await Settings.update(
@@ -82,7 +80,7 @@ module.exports = {
         },
         {
           where: {
-            UserId,
+            username,
           },
         }
       );

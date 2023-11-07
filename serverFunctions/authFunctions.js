@@ -91,8 +91,9 @@ module.exports = {
       );
 
       return res.status(200).json({
+        user: newUser,
         success: true,
-        msg: "You have registered",
+        msg: "New user registration successful",
       });
     } catch (error) {
       console.log(error);
