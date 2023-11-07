@@ -1,6 +1,8 @@
 "use strict";
 const { DataTypes } = require("sequelize");
 const { db } = require("./index");
+const Settings = require('../models/Settings');
+const SavedGame = require('../models/SavedGame');
 
 const User = db.define("User", {
   name: {
@@ -18,10 +20,10 @@ const User = db.define("User", {
 });
 
 User.associate = (models) => {
-  User.hasMany(models.SavedGame, {
+  User.hasMany(SavedGame, {
     onDelete: "CASCADE",
   });
-  User.hasOne(models.Settings, {
+  User.hasOne(Settings, {
     onDelete: "CASCADE",
   });
 };
