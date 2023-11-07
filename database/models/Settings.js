@@ -4,7 +4,7 @@ const { db } = require("./index");
 const User = require('../models/User');
 
 const Settings = db.define("Settings", {
-  username: {
+  UserId: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -26,9 +26,11 @@ const Settings = db.define("Settings", {
   },
 });
 
-Settings.belongsTo(User, {
-  onDelete: "CASCADE",
-});
+Settings.associate = (models) => {
+  Settings.belongsTo(User, {
+    onDelete: "CASCADE",
+  });
+};
 
 try {
   Settings.sync();

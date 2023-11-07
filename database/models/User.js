@@ -19,12 +19,14 @@ const User = db.define("User", {
   },
 });
 
-User.hasMany(SavedGame, {
-  onDelete: "CASCADE",
-});
-User.hasOne(Settings, {
-  onDelete: "CASCADE",
-});
+User.associate = (models) => {
+  User.hasMany(SavedGame, {
+    onDelete: "CASCADE",
+  });
+  User.hasOne(Settings, {
+    onDelete: "CASCADE",
+  });
+};
 
 try {
   User.sync();
