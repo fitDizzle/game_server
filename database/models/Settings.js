@@ -26,11 +26,9 @@ const Settings = db.define("Settings", {
   },
 });
 
-Settings.associate = (models) => {
-  Settings.belongsTo(User, {
-    onDelete: "CASCADE",
-  });
-};
+Settings.belongsTo(User, {
+  onDelete: "CASCADE",
+});
 
 try {
   Settings.sync();
