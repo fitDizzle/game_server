@@ -1,6 +1,7 @@
 "use strict";
 const { DataTypes } = require("sequelize");
 const { db } = require("./index");
+const User = require('../models/User');
 
 const Settings = db.define("Settings", {
   username: {
@@ -26,7 +27,7 @@ const Settings = db.define("Settings", {
 });
 
 Settings.associate = (models) => {
-  Settings.belongsTo(models.User, {
+  Settings.belongsTo(User, {
     onDelete: "CASCADE",
   });
 };
